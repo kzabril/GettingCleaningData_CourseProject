@@ -72,11 +72,11 @@ if (file.exists("./UCI HAR Dataset")){
     ds_inter <- melt(ds_main, id = c("subjectid", "activitytype"))
     names(ds_inter)[3] <- "signalmeasurement"
     names(ds_inter)[4] <- "averagevalue"
-    ds_inter <- arrange(ds_inter, subjectid, activitytype, measurement)
+    ds_inter <- arrange(ds_inter, subjectid, activitytype, signalmeasurement)
     #rm(ds_main)
     
     library(dplyr)
-    ds_final <- ddply(ds_inter, .(subjectid, activitytype, measurement), summarize, mean = mean(value))
+    ds_final <- ddply(ds_inter, .(subjectid, activitytype, signalmeasurement), summarize, mean = mean(averagevalue))
     rm(ds_inter)
     filedirectory <- "Course Project Results"
     if(!(file.exists(filedirectory))){

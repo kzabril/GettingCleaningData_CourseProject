@@ -1,6 +1,6 @@
-title: run_analysis.R
-author: kzabril
-date: August 20, 2015
+title: run_analysis.R  
+author: kzabril  
+date: August 20, 2015  
 
 ##Project Description
 The script generates a tidy dataset starting from a database generated from the recordings of 30 subjects performing different activities while carrying a waist-mounted Samsung Galaxy S II. The raw data consists of different datasets in txt format that needed to be loaded and transformed using R language to accomplish the following tasks:  
@@ -18,7 +18,7 @@ Refer to the project's [codebook]() document for complete details on the raw dat
 The run\_analysis.R script can be found on the following GitHub repository: [kzabril](https://github.com/kzabril/GettingCleaningData\_CourseProject).
 
 ##Documentation
-The documentation available for this project is included in markdown (md) format in the following GitHub repository:[kzabril](https://github.com/kzabril/GettingCleaningData\_CourseProject).
+The documentation available for this project is included in markdown (md) format in the following GitHub repository: [kzabril](https://github.com/kzabril/GettingCleaningData\_CourseProject).
 
 ##Description of the code
 The run_analysis.R script verifies if the folder *UCI HAR Dataset* containing the datasets exists in the working directory. If false, then execution stops.
