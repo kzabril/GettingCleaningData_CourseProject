@@ -47,17 +47,17 @@ The following objects are created:
         #ds_activities_test - dataset with list of activities performed by subjects in test dataset
         #ds_activity_labels - dataset with ids and descriptive variable names for both train and test sets  
         
-        ds_features <- read.table("UCI HAR Dataset/features.txt", stringsAsFactors=FALSE, header=FALSE)
-        ds_train <- read.table("UCI HAR Dataset/train/X_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", 
+        ds_features <- read.table("features.txt", stringsAsFactors=FALSE, header=FALSE)
+        ds_train <- read.table("train/X_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", 
          numerals ="no.loss", colClasses=myCols, col.names = column_names)
-        ds_test <- read.table("UCI HAR Dataset/test/X_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", 
+        ds_test <- read.table("test/X_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", 
          colClasses=myCols, col.names = column_names)
-        ds_subjects_train <- read.table("UCI HAR Dataset/train/subject_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
-        ds_subjects_test <- read.table("UCI HAR Dataset/test/subject_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
-        ds_activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE, header=FALSE, sep="", 
+        ds_subjects_train <- read.table("train/subject_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
+        ds_subjects_test <- read.table("test/subject_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
+        ds_activity_labels <- read.table("activity_labels.txt", stringsAsFactors=FALSE, header=FALSE, sep="", 
          col.names=c("id", "activitytype"))
-        ds_activities\_train<- read.table("UCI HAR Dataset/train/y_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
-        ds_activities\_test <- read.table("UCI HAR Dataset/test/y_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))  
+        ds_activities\_train<- read.table("train/y_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
+        ds_activities\_test <- read.table("test/y_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))  
 
 Performed activities and subjects are merged into ds\_train and ds\_test datasets by creating 2 additional columns: id to denote the activity performed and subjectid to indicate which subject performed the activity.
 
