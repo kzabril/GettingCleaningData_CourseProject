@@ -110,6 +110,10 @@ The following requirements need to be met for the script to successfuly generate
 
 ##Execution
 Execute script run_analysis.R in R.
+To load the generated txt file into R:  
+
+        ds\_tidy <- read.table(file="UCI HAR Dataset/Course Project Results/DSS_Getdata031_Final_DataSet_Project.txt", header=TRUE, sep="\t", stringsAsFactors=FALSE)  
+        
 Script was tested on a Ubuntu Linux 14.04.3 LTS.
 
 ##Help and Troubleshooting
