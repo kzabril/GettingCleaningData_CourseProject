@@ -1,8 +1,6 @@
----
 title: Data Science Specialization - Getting and Cleaning Data - Course Project Codebook  
 author: kzabril  
 date: August 19, 2015  
----
 
 ## Project Description
 The intention of the project is to use the knowledge obtained throughout the course to collect, analyse, transform, and clean data. The goal is to generate a tidy dataset saved as a text file for later analysis. The resulting dataset is tidy according to the lectures and documentation explored during the course and displays the average of a set of variables. Another goal of the project is learning to create a codebook and a readme file.
@@ -127,7 +125,7 @@ www.smartlab.ws
 5.  Directory UCI HAR Dataset contains the following files: activity\_labels.txt and features.txt.
 6.  Download the run\_analysis.R script from the [Github repository](https://github.com/kzabril/GettingCleaningData_CourseProject) to your working directory.
 7.  Run the run\_analysis.R script.
-8.  The resulting tidy datafile is stored in the following path in the working directory: "Course Project Results/DSS\_Getdata031\_Final\_DataSet\_Project.txt"
+8.  The resulting tidy datafile is stored in the following path in the *UCI HAR Dataset*: "Course Project Results/DSS\_Getdata031\_Final\_DataSet\_Project.txt"
 
 ###Cleaning of the data
 The cleaning script assumes the following:
@@ -135,7 +133,7 @@ The cleaning script assumes the following:
 *   The compressed file with the data has been downloaded from this [link](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip). 
 *   The compressed file has been decompressed into the working directory and the directory structure has been maintained: UCI HAR Dataset/train, UCI HAR Dataset/test.
 *   The script is ran by a user with enough permissions to write to the file system.
-*   The required packages have been installed. [Refer to readme document for details.]()
+*   The required packages have been installed. [Refer to readme document for details.](https://github.com/kzabril/GettingCleaningData_CourseProject/blob/master/README.md)
 
 The script loads the required datasets from the file system:
 
@@ -153,7 +151,7 @@ The script then merges both complete datasets into one where variable names are 
 **Example: tBodyAcc-mean()-X -> timebodyaccelerometermeanx.** 
 Dataset is melted by subjectid and activitytype to create variables signalmeasurement - the measurement name and averagevalue - value of the mean or standard deviation for that measurement. Finally, the script obtains the mean value for each measurement/activity/subject combination. The script creates directory "Course Project Results" inside the working directory where the resulting dataset is saved as a text file "DSS\_Getdata031\_Final\_DataSet\_Project.txt" using the write.table command.
 
-[For greater detail of the script code and components, refer to readme document]().
+[For greater detail of the script code and components, refer to readme document](https://github.com/kzabril/GettingCleaningData_CourseProject/blob/master/README.md).
 
 ##Description of the variables in the DSS\_Getdata031\_Final\_DataSet\_Project.txt file
 The file containing the tidy dataset is 759.3 KB in size. The dataset contains 4 variables: **subjectid**, **activitytype**, **signalmeasurement**, and **averagevalue**. The dataset shows the average of each signal measurement, for each activity and each subject.  
@@ -165,74 +163,74 @@ The file containing the tidy dataset is 759.3 KB in size. The dataset contains 4
 *   activitytype - descriptive name of the activity. Possible values are: standing, walking upstairs, walking downstairs, sitting, laying and walking.
 
 ###Variable signalmeasurement
-*   signalmeasurement - type of signal and estimated variable. Possible values:
+*   signalmeasurement - type of signal and estimated variable. Accelerometer variables are in standard gravity units. Gyroscope variables are in radians/second. Possible values:
 
-        timebodyaccelerometermeanx - mean of time domain body acceleration signal in x direction in standard gravity units.
-        timebodyaccelerometermeany - mean of time domain body acceleration signal in y direction in standard gravity units.??
-        timebodyaccelerometermeanz - mean of time domain body acceleration signal in z direction in standard gravity units.
-        timebodyaccelerometerstdx - standard deviation of time domain body acceleration signal in x direction in standard gravity units.
-        timebodyaccelerometerstdy - standard deviation of time domain body acceleration signal in y direction in standard gravity units.
-        timebodyaccelerometerstdz - standard deviation of time domain body acceleration signal in z direction in standard gravity units.
-        timegravityaccelerometermeanx - mean of time domain gravity accelerationsignal in x direction in standard gravity units.
-        timegravityaccelerometermeany - mean of time domain gravity acceleration signal in y direction in standard gravity units.
-        timegravityaccelerometermeanz - mean of time domain gravity acceleration signal in z direction in standard gravity units.
-        timegravityaccelerometerstdx - standard deviation of time domain gravity acceleration signal in x direction in standard gravity units.
-        timegravityaccelerometerstdy - standard deviation of time domain gravity acceleration signal in y direction in standard gravity units.
-        timegravityaccelerometerstdz - standard deviation of time domain gravity acceleration signal in  z direction in standard gravity units.
-        timebodyaccelerometerjerkmeanx - mean of time domain Jerk signal in x direction in standard gravity units.
-        timebodyaccelerometerjerkmeany - mean of time domain Jerk signal in y direction in standard gravity units.
-        timebodyaccelerometerjerkmeanz - mean of time domain Jerk signal in z direction in standard gravity units.
-        timebodyaccelerometerjerkstdx - standard deviation of time domain Jerk signal in x direction in standard gravity units.
-        timebodyaccelerometerjerkstdy - standard deviation of time domain Jerk signal in y direction in standard gravity units.
-        timebodyaccelerometerjerkstdz - standard deviation of time domain Jerk signal in z direction in standard gravity units.
-        timebodygyroscopemeanx - mean of time domain body gyroscope signal in x direction in radians/second.
-        timebodygyroscopemeany - mean of time domain body gyroscope signal in y direction in radians/second.
-        timebodygyroscopemeanz - mean of time domain body gyroscope signal in z direction in radians/second.
-        timebodygyroscopestdx - standard deviation of time domain body gyroscope signal in x direction in radians/second.
-        timebodygyroscopestdy - standard deviation of time domain body gyroscope signal in y direction in radians/second.
-        timebodygyroscopestdz - standard deviation of time domain body gyroscope signal in z direction in radians/second.
-        timebodygyroscopejerkmeanx - mean of time domain body gyroscope Jerk signal in x direction in radians/second.
-        timebodygyroscopejerkmeany - mean of time domain body gyroscope Jerk signal in y direction in radians/second.
-        timebodygyroscopejerkmeanz - mean of time domain body gyroscope Jerk signal in z direction in radians/second.
-        timebodygyroscopejerkstdx - standard deviation of time domain body gyroscope Jerk signal in x direction in radians/second.
-        timebodygyroscopejerkstdy - standard deviation of time domain body gyroscope Jerk signal in y direction in radians/second.
-        timebodygyroscopejerkstdz - standard deviation of time domain body gyroscope Jerk signal in z direction in radians/second.
-        timebodyaccelerometermagnitudemean - mean of magnitude of time domain body acceleration signal in units.!
-        timebodyaccelerometermagnitudestd - mean of magnitude of time domain body acceleration signal in units.
-        timegravityaccelerometermagnitudemean - mean of magnitude of time domain acceleration signal in units.
-        timegravityaccelerometermagnitudestd - standard deviation of magnitude of time domain acceleration signal in units.
-        timebodyaccelerometerjerkmagnitudemean - mean of magnitude of time domain body acceleration Jerk signal in units.
-        timebodyaccelerometerjerkmagnitudestd - standard deviation of magnitude of time domain body acceleration Jerk signal in units.
-        timebodygyroscopemagnitudemean - mean of magnitude of time domain gyroscope signal in units.
-        timebodygyroscopemagnitudestd - standard deviation of magnitude of time domain gyroscope signal in units.
-        timebodygyroscopejerkmagnitudemean - mean of magnitude of time domain gyroscope Jerk signal in units.
-        timebodygyroscopejerkmagnitudestd - standard deviation of magnitude of time domain gyroscope Jerk signal in units.
-        frequencybodyaccelerometermeanx - mean of frequency domain body acceleration signal in x direction in standard gravity units.
-        frequencybodyaccelerometermeany - mean of frequency domain body acceleration signal in y direction in standard gravity units.
-        frequencybodyaccelerometermeanz - mean of frequency domain body acceleration signal in z direction in standard gravity units.
-        frequencybodyaccelerometerstdx - standard deviation of frequency domain body acceleration signal in x direction in standard gravity units.
-        frequencybodyaccelerometerstdy - standard deviation of frequency domain body acceleration signal in y direction in standard gravity units.
-        frequencybodyaccelerometerstdz - standard deviation of frequency domain body acceleration signal in z direction in standard gravity units.
-        frequencybodyaccelerometerjerkmeanx - mean of frequency domain Jerk signal in x direction in standard gravity units.
-        frequencybodyaccelerometerjerkmeany - mean of frequency domain Jerk signal in y direction in standard gravity units.
-        frequencybodyaccelerometerjerkmeanz - mean of frequency domain Jerk signal in z direction in standard gravity units.
-        frequencybodyaccelerometerjerkstdx - standard deviation of frequency domain Jerk signal in x direction in standard gravity units.
-        frequencybodyaccelerometerjerkstdy - standard deviation of frequency domain Jerk signal in y direction in standard gravity units.
-        frequencybodyaccelerometerjerkstdz - standard deviation of frequency domain Jerk signal in z direction in standard gravity units.
-        frequencybodygyroscopemeanx - mean of frequency domain body gyroscope signal in x direction in radians/second.
-        frequencybodygyroscopemeany - mean of frequency domain body gyroscope signal in y direction in radians/second.
-        frequencybodygyroscopemeanz - mean of frequency domain body gyroscope signal in z direction in radians/second.
-        frequencybodygyroscopestdx - standard deviation of frequency domain body gyroscope signal in x direction in radians/second.
-        frequencybodygyroscopestdy - standard deviation of frequency domain body gyroscope signal in y direction in radians/second.
-        frequencybodygyroscopestdz - standard deviation of frequency domain body gyroscope signal in z direction in radians/second.
-        frequencybodyaccelerometermagnitudemean - mean of magnitude of frequency domain body acceleration signal in units.!
-        frequencybodyaccelerometermagnitudestd - standard deviation of frequency domain body acceleration signal in units.!
-        frequencybodybodyaccelerometerjerkmagnitudemean - mean of magnitude of frequency domain body acceleration Jerk signal in units.
-        frequencybodybodyaccelerometerjerkmagnitudestd - standard deviation of frequency domain body acceleration Jerk signal in units.
-        frequencybodybodygyroscopemagnitudemean -mean of magnitude of frequency domain gyroscope signal in units.
-        frequencybodybodygyroscopemagnitudestd - standard deviation of magnitude of frequency domain gyroscope signal in units.
-        frequencybodybodygyroscopejerkmagnitudemean - mean of magnitude of frequency domain gyroscope Jerk signal in units.
-        frequencybodybodygyroscopejerkmagnitudestd - standard deviation of magnitude of frequency domain gyroscope Jerk signal in units.
+        timebodyaccelerometermeanx - mean of time domain body acceleration signal in x direction.
+        timebodyaccelerometermeany - mean of time domain body acceleration signal in y direction.
+        timebodyaccelerometermeanz - mean of time domain body acceleration signal in z direction.
+        timebodyaccelerometerstdx - standard deviation of time domain body acceleration signal in x direction.
+        timebodyaccelerometerstdy - standard deviation of time domain body acceleration signal in y direction.
+        timebodyaccelerometerstdz - standard deviation of time domain body acceleration signal in z direction.
+        timegravityaccelerometermeanx - mean of time domain gravity accelerationsignal in x direction.
+        timegravityaccelerometermeany - mean of time domain gravity acceleration signal in y direction.
+        timegravityaccelerometermeanz - mean of time domain gravity acceleration signal in z direction.
+        timegravityaccelerometerstdx - standard deviation of time domain gravity acceleration signal in x direction.
+        timegravityaccelerometerstdy - standard deviation of time domain gravity acceleration signal in y direction.
+        timegravityaccelerometerstdz - standard deviation of time domain gravity acceleration signal in  z direction.
+        timebodyaccelerometerjerkmeanx - mean of time domain Jerk signal in x direction.
+        timebodyaccelerometerjerkmeany - mean of time domain Jerk signal in y direction
+        timebodyaccelerometerjerkmeanz - mean of time domain Jerk signal in z direction
+        timebodyaccelerometerjerkstdx - standard deviation of time domain Jerk signal in x direction.
+        timebodyaccelerometerjerkstdy - standard deviation of time domain Jerk signal in y direction.
+        timebodyaccelerometerjerkstdz - standard deviation of time domain Jerk signal in z direction.
+        timebodygyroscopemeanx - mean of time domain body gyroscope signal in x direction.
+        timebodygyroscopemeany - mean of time domain body gyroscope signal in y direction.
+        timebodygyroscopemeanz - mean of time domain body gyroscope signal in z direction.
+        timebodygyroscopestdx - standard deviation of time domain body gyroscope signal in x direction.
+        timebodygyroscopestdy - standard deviation of time domain body gyroscope signal in y direction.
+        timebodygyroscopestdz - standard deviation of time domain body gyroscope signal in z direction.
+        timebodygyroscopejerkmeanx - mean of time domain body gyroscope Jerk signal in x direction.
+        timebodygyroscopejerkmeany - mean of time domain body gyroscope Jerk signal in y direction.
+        timebodygyroscopejerkmeanz - mean of time domain body gyroscope Jerk signal in z direction.
+        timebodygyroscopejerkstdx - standard deviation of time domain body gyroscope Jerk signal in x direction.
+        timebodygyroscopejerkstdy - standard deviation of time domain body gyroscope Jerk signal in y direction.
+        timebodygyroscopejerkstdz - standard deviation of time domain body gyroscope Jerk signal in z direction.
+        timebodyaccelerometermagnitudemean - mean of magnitude of time domain body acceleration signal.
+        timebodyaccelerometermagnitudestd - mean of magnitude of time domain body acceleration signal.
+        timegravityaccelerometermagnitudemean - mean of magnitude of time domain acceleration signal.
+        timegravityaccelerometermagnitudestd - standard deviation of magnitude of time domain acceleration signal.
+        timebodyaccelerometerjerkmagnitudemean - mean of magnitude of time domain body acceleration Jerk signal.
+        timebodyaccelerometerjerkmagnitudestd - standard deviation of magnitude of time domain body acceleration Jerk signal.
+        timebodygyroscopemagnitudemean - mean of magnitude of time domain gyroscope signal.
+        timebodygyroscopemagnitudestd - standard deviation of magnitude of time domain gyroscope signal.
+        timebodygyroscopejerkmagnitudemean - mean of magnitude of time domain gyroscope Jerk signal.
+        timebodygyroscopejerkmagnitudestd - standard deviation of magnitude of time domain gyroscope Jerk signal.
+        frequencybodyaccelerometermeanx - mean of frequency domain body acceleration signal in x direction.
+        frequencybodyaccelerometermeany - mean of frequency domain body acceleration signal in y direction.
+        frequencybodyaccelerometermeanz - mean of frequency domain body acceleration signal in z direction.
+        frequencybodyaccelerometerstdx - standard deviation of frequency domain body acceleration signal in x direction.
+        frequencybodyaccelerometerstdy - standard deviation of frequency domain body acceleration signal in y direction.
+        frequencybodyaccelerometerstdz - standard deviation of frequency domain body acceleration signal in z direction.
+        frequencybodyaccelerometerjerkmeanx - mean of frequency domain Jerk signal in x direction.
+        frequencybodyaccelerometerjerkmeany - mean of frequency domain Jerk signal in y direction.
+        frequencybodyaccelerometerjerkmeanz - mean of frequency domain Jerk signal in z direction.
+        frequencybodyaccelerometerjerkstdx - standard deviation of frequency domain Jerk signal in x direction.
+        frequencybodyaccelerometerjerkstdy - standard deviation of frequency domain Jerk signal in y direction.
+        frequencybodyaccelerometerjerkstdz - standard deviation of frequency domain Jerk signal in z direction.
+        frequencybodygyroscopemeanx - mean of frequency domain body gyroscope signal in x direction.
+        frequencybodygyroscopemeany - mean of frequency domain body gyroscope signal in y direction.
+        frequencybodygyroscopemeanz - mean of frequency domain body gyroscope signal in z direction.
+        frequencybodygyroscopestdx - standard deviation of frequency domain body gyroscope signal in x direction.
+        frequencybodygyroscopestdy - standard deviation of frequency domain body gyroscope signal in y direction.
+        frequencybodygyroscopestdz - standard deviation of frequency domain body gyroscope signal in z direction.
+        frequencybodyaccelerometermagnitudemean - mean of magnitude of frequency domain body acceleration signal.
+        frequencybodyaccelerometermagnitudestd - standard deviation of frequency domain body acceleration signal.
+        frequencybodybodyaccelerometerjerkmagnitudemean - mean of magnitude of frequency domain body acceleration Jerk signal.
+        frequencybodybodyaccelerometerjerkmagnitudestd - standard deviation of frequency domain body acceleration Jerk signal.
+        frequencybodybodygyroscopemagnitudemean -mean of magnitude of frequency domain gyroscope signal.
+        frequencybodybodygyroscopemagnitudestd - standard deviation of magnitude of frequency domain gyroscope signal.
+        frequencybodybodygyroscopejerkmagnitudemean - mean of magnitude of frequency domain gyroscope Jerk signal.
+        frequencybodybodygyroscopejerkmagnitudestd - standard deviation of magnitude of frequency domain gyroscope Jerk signal.
 
-###Variable averagevalue
-*   averagevalue - calculated mean for each measurement type. See possible values of signalmeasurement variable for unit information.
+###Variable mean
+*   mean - calculated mean for each measurement type. See possible values of signalmeasurement variable for unit information.

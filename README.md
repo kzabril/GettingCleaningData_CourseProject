@@ -12,7 +12,7 @@ The script generates a tidy dataset starting from a database generated from the 
 5.  From the dataset in step 4, create a second, independent tidy dataset with the average of each variable for each activity and each subject.
 6.  The resulting tidy dataset is saved as a text file.  
 
-Refer to the project's [codebook]() document for complete details on the raw data and variables used in the project.
+Refer to the project's [codebook](https://github.com/kzabril/GettingCleaningData_CourseProject/blob/master/codebook.md) document for complete details on the raw data and variables used in the project.
 
 ##Downloading
 The run\_analysis.R script can be found on the following GitHub repository: [kzabril](https://github.com/kzabril/GettingCleaningData\_CourseProject).
@@ -21,9 +21,13 @@ The run\_analysis.R script can be found on the following GitHub repository: [kza
 The documentation available for this project is included in markdown (md) format in the following GitHub repository: [kzabril](https://github.com/kzabril/GettingCleaningData\_CourseProject).
 
 ##Description of the code
-The run_analysis.R script verifies if the folder *UCI HAR Dataset* containing the datasets exists in the working directory. If false, then execution stops.
+The run_analysis.R script sets the working directory to folder *UCI HAR Dataset* which contain the datasets that are needed for the script. 
 
-        if (file.exists("./UCI HAR Dataset")){
+        setwd(file.path(getwd(),"UCI HAR Dataset"))  
+        
+The script then checks if the folders *train* and *test* exist in the new working directory. If they don't exist, the execution stops.
+
+        if ((file.exists("train")) & (file.exists("test")))
         
 A vector that holds the index of the subsetted variables to include in the analysis is created:  
 
@@ -90,7 +94,7 @@ The final tidy dataset is generated and the average of each measurement for each
 
         ds_final <- ddply(ds_inter, .(subjectid, activitytype, measurement), summarize, mean = mean(value))  
         
-The dataset is saved to the file directory as DSS\_Getdata031\_Final\_DataSet\_Project.txt into folder "Course Project Results":  
+The dataset is saved to the file system as DSS\_Getdata031\_Final\_DataSet\_Project.txt in path *UCI HAR Dataset/Course Project Results*:  
 
         write.table(ds_final, file="DSS_Getdata031_Final_DataSet_Project.txt" , sep="\t", eol = "\n", row.names = FALSE, col.names = TRUE, quote = FALSE)  
         
@@ -99,14 +103,18 @@ The following requirements need to be met for the script to successfuly generate
 
 *   The compressed file with the raw data must be downloaded from [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip). 
 *   The compressed file must be decompressed into the current working directory and the directory structure of the downloaded files needs to be maintained. Example: *UCI HAR Dataset/train*, *UCI HAR Dataset/test*.
+*   The working directory must be one level up from "UCI HAR Dataset" directory.
 *   Packages dplyr, stringr, reshape2 are installed.
 *   The script must be downladed from the [Github respository]((https://github.com/kzabril/GettingCleaningData\_CourseProject).
 *   The script must be executed by a user with enough permissions to write to the file system.
 
 ##Execution
 Execute script run_analysis.R in R.
+Script was tested on a Ubuntu Linux 14.04.3 LTS.
 
 ##Help and Troubleshooting
 If the file is not being generated, review the directory structure and permissions. Refer to section Requirements on this document.
+If an error is raised due to a requirement not met previously, reset working directory to a directory one level up from "UCI HAR Dataset".
 
+Script was tested on a Ubuntu Linux 14.04.3 LTS.
 

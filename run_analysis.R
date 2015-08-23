@@ -2,7 +2,11 @@ library(plyr)
 library(stringr)
 library(reshape2)
 
-if (file.exists("./UCI HAR Dataset")){
+old_wd <- getwd()
+setwd(file.path(getwd(),"UCI HAR Dataset"))
+#print(getwd())
+if ((file.exists("train")) & (file.exists("test"))){
+    #print("exists")
     #Mean and standard variation columns
     colsVector <- c(1,2,3,4,5,6,41,42,43,44,45,46,81,82,83,84,85,86,121,122,123,124,125,126,161,162,163,164,165,166,201,202,214,215,227,228,240,241,253,254,266,267,268,269,270,271,345,346,347,348,349,350,424,425,426,427,428,429,503,504,516,517,529,530,542,543)
     myCols <- c(rep("NULL", 561))
@@ -17,22 +21,23 @@ if (file.exists("./UCI HAR Dataset")){
     #ds_activities_test - list of activities performed by subjects in test data set
     #ds_activity_labels - ids and descriptive variable names for both sets
     
-    ds_features <- read.table("UCI HAR Dataset/features.txt", stringsAsFactors=FALSE, header=FALSE)
+    ds_features <- read.table("features.txt", stringsAsFactors=FALSE, header=FALSE)
     column_names <-gsub("[(),-]","",ds_features[,2])
    
-    ds_train <- read.table("UCI HAR Dataset/train/X_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", colClasses=myCols, col.names = column_names)
-    ds_test <- read.table("UCI HAR Dataset/test/X_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", colClasses=myCols, col.names = column_names)
+    ds_train <- read.table("train/X_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", colClasses=myCols, col.names = column_names)
+    ds_test <- read.table("test/X_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", numerals ="no.loss", colClasses=myCols, col.names = column_names)
     rm(myCols)
     rm(colsVector)
     rm(ds_features)
+    rm(column_names)
     
-    ds_subjects_train <- read.table("UCI HAR Dataset/train/subject_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
-    ds_subjects_test <- read.table("UCI HAR Dataset/test/subject_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
+    ds_subjects_train <- read.table("train/subject_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
+    ds_subjects_test <- read.table("test/subject_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="")
     
-    ds_activity_labels<- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id", "activitytype"))
+    ds_activity_labels<- read.table("activity_labels.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id", "activitytype"))
     ds_activity_labels[,2] <- tolower(ds_activity_labels[,2])
-    ds_activities_train <- read.table("UCI HAR Dataset/train/y_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
-    ds_activities_test <- read.table("UCI HAR Dataset/test/y_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
+    ds_activities_train <- read.table("train/y_train.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
+    ds_activities_test <- read.table("test/y_test.txt", stringsAsFactors=FALSE, header=FALSE, sep="", col.names=c("id"))
     
     #Adding activities and subjects to train/test data set. 
     ds_train$id <- ds_activities_train$id
@@ -73,7 +78,7 @@ if (file.exists("./UCI HAR Dataset")){
     names(ds_inter)[3] <- "signalmeasurement"
     names(ds_inter)[4] <- "averagevalue"
     ds_inter <- arrange(ds_inter, subjectid, activitytype, signalmeasurement)
-    #rm(ds_main)
+    rm(ds_main)
     
     library(dplyr)
     ds_final <- ddply(ds_inter, .(subjectid, activitytype, signalmeasurement), summarize, mean = mean(averagevalue))
@@ -82,10 +87,11 @@ if (file.exists("./UCI HAR Dataset")){
     if(!(file.exists(filedirectory))){
         dir.create(file.path(getwd(), filedirectory))
     }
-    old_wd <- getwd()
+    
     setwd(file.path(getwd(),filedirectory))
     write.table(ds_final, file="DSS_Getdata031_Final_DataSet_Project.txt" , sep="\t", eol = "\n", row.names = FALSE, col.names = TRUE, quote = FALSE)
-    setwd(old_wd)
+    
     rm(ds_final)
     
 }
+setwd(old_wd)
